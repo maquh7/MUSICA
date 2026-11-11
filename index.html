@@ -82,4 +82,269 @@
             padding: 16px 20px;
             border-radius: 12px;
             font-weight: 700;
-            font-size
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-link:hover {
+            background: linear-gradient(145deg, #282932, #1d1e24);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn-primary {
+            background: linear-gradient(145deg, #ffffff, #e0e0e0);
+            color: #000000;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(145deg, #f0f0f0, #cccccc);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Reproductor Embebido */
+        .player-section {
+            margin-top: 24px;
+            text-align: left;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            color: #888899;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .player-container {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* FAQ Desplegable */
+        .faq-section {
+            margin-top: 24px;
+            text-align: left;
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        details[open] {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        summary {
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #dddde5;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "+";
+            font-size: 1.1rem;
+            color: #888899;
+        }
+
+        details[open] summary::after {
+            content: "−";
+        }
+
+        details p {
+            margin-top: 10px;
+            color: #aaaabb;
+            line-height: 1.4;
+            font-size: 0.8rem;
+        }
+
+        footer {
+            margin-top: 32px;
+            color: #555566;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="space-canvas"></canvas>
+
+    <div class="container">
+        <h1>MAQUH</h1>
+        <p class="subtitle">PRODUCCIÓN MUSICAL | BEATS | MIX & MASTER</p>
+
+        <div class="links-group">
+            <a href="https://calendar.app.google/tdgtQwTzYvSrzDXW7" target="_blank" rel="noopener noreferrer" class="btn-link btn-primary">
+                📅 RESERVAR TURNO DE GRABACIÓN
+            </a>
+
+            <a href="https://on.soundcloud.com/HelGWdKMTXicIXeIxo" target="_blank" rel="noopener noreferrer" class="btn-link">
+                🔥 CATÁLOGO COMPLETO DE BEATS
+            </a>
+
+            <a href="https://www.youtube.com/@maquh" target="_blank" rel="noopener noreferrer" class="btn-link">
+                📺 MIS CANCIONES (YOUTUBE)
+            </a>
+
+            <a href="https://wa.me/5491176575146" target="_blank" rel="noopener noreferrer" class="btn-link">
+                💬 CONSULTAS POR WHATSAPP
+            </a>
+        </div>
+
+        <!-- Reproductor Embebido SoundCloud (Tema hhtrip) -->
+        <div class="player-section">
+            <div class="section-title">BEAT RECOMENDADO</div>
+            <div class="player-container">
+                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2027581134&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
+            </div>
+        </div>
+
+        <!-- Preguntas Frecuentes -->
+        <div class="faq-section">
+            <div class="section-title">PREGUNTAS FRECUENTES</div>
+            
+            <details>
+                <summary>¿Qué tengo que llevar a la sesión?</summary>
+                <p>Tu canción lista para grabar (letra y estructura clara).</p>
+            </details>
+
+            <details>
+                <summary>¿Cuáles son los medios de pago?</summary>
+                <p>Podés abonar en efectivo o mediante transferencia bancaria.</p>
+            </details>
+
+            <details>
+                <summary>¿Qué tipos de licencias de beats hay?</summary>
+                <p>• Licencia MP3: $30 USD<br>• Licencia WAV: $60 USD<br>• WAV y Stems: $100 USD<br><br>Al impactar el pago recibís los archivos de forma inmediata.</p>
+            </details>
+
+            <details>
+                <summary>¿Cómo es la modalidad de trabajo (estudio y online)?</summary>
+                <p>Trabajo tanto de forma presencial en el estudio como a distancia (online), adaptándome a lo que necesites para tu proyecto.</p>
+            </details>
+        </div>
+
+        <footer>
+            © MAQUH. TODOS LOS DERECHOS RESERVADOS.
+        </footer>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('space-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Estrellas de fondo
+        const stars = Array.from({ length: 80 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2 + 0.5,
+            speed: Math.random() * 0.4 + 0.1,
+            opacity: Math.random() * 0.7 + 0.3
+        }));
+
+        // Nave Pixel Art
+        const ship = {
+            x: -40,
+            y: canvas.height * 0.3,
+            speedX: 1.2,
+            amplitude: 25,
+            frequency: 0.015,
+            angle: 0
+        };
+
+        const pixelScale = 3;
+        const shipMatrix = [
+            [0,0,0,1,1,0,0,0],
+            [0,0,1,2,2,1,0,0],
+            [0,1,2,3,3,2,1,0],
+            [1,2,2,2,2,2,2,1],
+            [1,1,1,2,2,1,1,1],
+            [0,0,1,0,0,1,0,0],
+            [0,1,4,0,0,4,1,0],
+            [0,0,4,0,0,4,0,0]
+        ];
+
+        const colors = {
+            1: '#ffffff',
+            2: '#888899',
+            3: '#00e5ff',
+            4: '#ff3366'
+        };
+
+        function drawPixelShip(x, y) {
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(Math.cos(ship.angle) * 0.15 + 0.2);
+
+            for (let r = 0; r < shipMatrix.length; r++) {
+                for (let c = 0; c < shipMatrix[r].length; c++) {
+                    const colorIndex = shipMatrix[r][c];
+                    if (colorIndex !== 0) {
+                        ctx.fillStyle = colors[colorIndex];
+                        if (colorIndex === 4 && Math.random() > 0.4) {
+                            ctx.fillStyle = '#ffaa00';
+                        }
+                        ctx.fillRect(c * pixelScale, r * pixelScale, pixelScale, pixelScale);
+                    }
+                }
+            }
+            ctx.restore();
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            stars.forEach(star => {
+                star.x -= star.speed;
+                if (star.x < 0) star.x = canvas.width;
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                ctx.fillRect(Math.floor(star.x), Math.floor(star.y), star.size, star.size);
+            });
+
+            ship.angle += ship.frequency;
+            ship.x += ship.speedX;
+            ship.y = (canvas.height * 0.25) + Math.sin(ship.angle) * ship.amplitude;
+
+            if (ship.x > canvas.width + 50) {
+                ship.x = -60;
+                ship.y = Math.random() * (canvas.height * 0.6) + (canvas.height * 0.1);
+            }
+
+            drawPixelShip(ship.x, ship.y);
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
