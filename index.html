@@ -9,36 +9,59 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #0f0f0f;
+            background-color: #0b0b0b;
             color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Fondo de partículas sutiles */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
         }
 
         .container {
+            position: relative;
+            z-index: 2;
             width: 100%;
-            max-width: 420px;
+            max-width: 440px;
             text-align: center;
+            background: rgba(18, 18, 18, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 32px 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
-            font-size: 1.8rem;
-            letter-spacing: 2px;
+            font-size: 2rem;
+            letter-spacing: 3px;
             margin-bottom: 6px;
+            font-weight: 800;
         }
 
         p.subtitle {
-            color: #aaaaaa;
-            font-size: 0.85rem;
-            margin-bottom: 24px;
-            font-weight: bold;
+            color: #888888;
+            font-size: 0.8rem;
+            margin-bottom: 28px;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .links-group {
@@ -48,65 +71,134 @@
         }
 
         .btn-link {
-            display: block;
-            background-color: #1f1f1f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(145deg, #181818, #121212);
             color: #ffffff;
             text-decoration: none;
-            padding: 16px;
-            border-radius: 8px;
-            font-weight: bold;
-            border: 1px solid #333;
-            transition: 0.2s;
+            padding: 16px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
         .btn-link:hover {
-            background-color: #333333;
+            background: linear-gradient(145deg, #222222, #1a1a1a);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
         }
 
         .btn-primary {
-            background-color: #ffffff;
+            background: linear-gradient(145deg, #ffffff, #e0e0e0);
             color: #000000;
+            border: none;
         }
 
         .btn-primary:hover {
-            background-color: #dddddd;
+            background: linear-gradient(145deg, #f0f0f0, #cccccc);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(255, 255, 255, 0.15);
         }
 
         footer {
             margin-top: 32px;
             color: #555555;
             font-size: 0.75rem;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
+    <!-- Canvas para las partículas -->
+    <canvas id="particles-js"></canvas>
+
     <div class="container">
         <h1>MAQUH</h1>
-        <p class="subtitle">PRODUCCIÓN MUSICAL | BEATS | MEZCLA & MASTER</p>
+        <p class="subtitle">PRODUCCIÓN MUSICAL | BEATS | MIX & MASTER</p>
 
         <div class="links-group">
-            <a href="TU_LINK_DE_GOOGLE_CALENDAR" target="_blank" class="btn-link btn-primary">
+            <a href="https://calendar.app.google/tdgtQwTzYvSrzDXW7" target="_blank" class="btn-link btn-primary">
                 📅 RESERVAR TURNO DE GRABACIÓN
             </a>
 
+            <a href="https://on.soundcloud.com/HelGWdKMTXicIXeIxo" target="_blank" class="btn-link">
+                🔥 CATÁLOGO DE BEATS
+            </a>
+
+            <a href="https://www.youtube.com/@maquh" target="_blank" class="btn-link">
+                📺 MIS CANCIONES (YOUTUBE)
+            </a>
+
             <a href="https://wa.me/5491176575146" target="_blank" class="btn-link">
-                💬 WHATSAPP DIRECTO
-            </a>
-
-            <a href="TU_LINK_DE_SPOTIFY" target="_blank" class="btn-link">
-                🎵 SPOTIFY
-            </a>
-
-            <a href="TU_LINK_DE_YOUTUBE" target="_blank" class="btn-link">
-                📺 YOUTUBE
+                💬 CONSULTAS POR WHATSAPP
             </a>
         </div>
 
         <footer>
-            © MAQUH
+            © MAQUH. TODOS LOS DERECHOS RESERVADOS.
         </footer>
     </div>
 
+    <script>
+        // Script sutil de partículas de fondo
+        const canvas = document.getElementById('particles-js');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particlesArray = [];
+        const numberOfParticles = 35;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < numberOfParticles; i++) {
+            particlesArray.push(new Particle());
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+    </script>
 </body>
 </html>
