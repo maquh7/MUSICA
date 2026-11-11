@@ -145,36 +145,39 @@
             background: linear-gradient(145deg, #00d2ff, #0099d4);
         }
 
-        /* Contenedor de Redes Sociales */
+        /* Barra de Redes Sociales Moderna y Finita */
         .social-bar {
             display: flex;
-            justify-content: center;
-            gap: 12px;
+            justify-content: space-between;
+            gap: 10px;
             margin-top: 4px;
         }
 
-        .social-btn {
+        .social-icon-btn {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
             background: linear-gradient(145deg, #141915, #0d120e);
             color: #ffffff;
             text-decoration: none;
-            padding: 12px;
+            padding: 14px 10px;
             border-radius: 12px;
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.25s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
-        .social-btn:hover {
+        .social-icon-btn:hover {
             background: linear-gradient(145deg, #1b241c, #141915);
             border-color: rgba(0, 255, 102, 0.4);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 255, 102, 0.25);
+            color: #00ff66;
         }
 
         /* Panel Desplegable de Mix & Master */
@@ -384,7 +387,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>LINK DE LES STEMS (DRIVE / WETRANSFER)</label>
+                    <label>LINK DE LOS STEMS (DRIVE / WETRANSFER)</label>
                     <input type="text" id="stemsLink" placeholder="https://drive.google.com/...">
                 </div>
 
@@ -406,15 +409,15 @@
                 📺 MIS CANCIONES
             </a>
 
-            <!-- Barra de Redes Sociales (Instagram, TikTok, Facebook) -->
+            <!-- Barra de Redes Sociales Moderna y Finita -->
             <div class="social-bar">
-                <a href="https://instagram.com/maquh_" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram">
+                <a href="https://instagram.com/maquh_" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Instagram">
                     📸 IG
                 </a>
-                <a href="https://tiktok.com/@maquh_" target="_blank" rel="noopener noreferrer" class="social-btn" title="TikTok">
-                    🎵 TK
+                <a href="https://tiktok.com/@maquh_" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="TikTok">
+                    🎵 TIKTOK
                 </a>
-                <a href="https://facebook.com/maquh.xxx" target="_blank" rel="noopener noreferrer" class="social-btn" title="Facebook">
+                <a href="https://facebook.com/maquh.xxx" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Facebook">
                     📘 FB
                 </a>
             </div>
@@ -474,7 +477,7 @@
             }
 
             const phone = '5491176575146';
-            const text = `Hola MAQUH, soy ${artist}. Acabo de contratar el servicio de Mix & Master. Te dejo el link con les stems y te adjunto el comprobante de pago: ${link}`;
+            const text = `Hola MAQUH, soy ${artist}. Acabo de contratar el servicio de Mix & Master. Te dejo el link con los stems y te adjunto el comprobante de pago: ${link}`;
             const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
             
             window.open(url, '_blank');
