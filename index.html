@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #0b0b0b;
+            background-color: #0b0c10;
             color: #ffffff;
             display: flex;
             justify-content: center;
@@ -24,9 +24,9 @@
             overflow-x: hidden;
         }
 
-        /* Fondo de partículas sutiles */
-        #particles-js {
-            position: absolute;
+        /* Canvas de fondo con estrellas y nave pixel art */
+        #space-canvas {
+            position: fixed;
             width: 100%;
             height: 100%;
             top: 0;
@@ -39,28 +39,29 @@
             position: relative;
             z-index: 2;
             width: 100%;
-            max-width: 440px;
+            max-width: 460px;
             text-align: center;
-            background: rgba(18, 18, 18, 0.75);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(18, 18, 22, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 32px 24px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            margin: 20px 0;
         }
 
         h1 {
-            font-size: 2rem;
-            letter-spacing: 3px;
+            font-size: 2.2rem;
+            letter-spacing: 4px;
             margin-bottom: 6px;
             font-weight: 800;
         }
 
         p.subtitle {
-            color: #888888;
+            color: #a0a0aa;
             font-size: 0.8rem;
             margin-bottom: 28px;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             font-weight: 600;
         }
 
@@ -75,23 +76,23 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background: linear-gradient(145deg, #181818, #121212);
+            background: linear-gradient(145deg, #1d1e24, #15161a);
             color: #ffffff;
             text-decoration: none;
             padding: 16px 20px;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 700;
             font-size: 0.95rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.25s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .btn-link:hover {
-            background: linear-gradient(145deg, #222222, #1a1a1a);
+            background: linear-gradient(145deg, #282932, #1d1e24);
             border-color: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
         }
 
         .btn-primary {
@@ -103,21 +104,92 @@
         .btn-primary:hover {
             background: linear-gradient(145deg, #f0f0f0, #cccccc);
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(255, 255, 255, 0.15);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Reproductor Embebido */
+        .player-section {
+            margin-top: 24px;
+            text-align: left;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            color: #888899;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .player-container {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* FAQ Desplegable */
+        .faq-section {
+            margin-top: 24px;
+            text-align: left;
+        }
+
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        details[open] {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        summary {
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #dddde5;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "+";
+            font-size: 1.1rem;
+            color: #888899;
+        }
+
+        details[open] summary::after {
+            content: "−";
+        }
+
+        details p {
+            margin-top: 10px;
+            color: #aaaabb;
+            line-height: 1.4;
+            font-size: 0.8rem;
         }
 
         footer {
             margin-top: 32px;
-            color: #555555;
+            color: #555566;
             font-size: 0.75rem;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Canvas para las partículas -->
-    <canvas id="particles-js"></canvas>
+    <canvas id="space-canvas"></canvas>
 
     <div class="container">
         <h1>MAQUH</h1>
@@ -129,7 +201,7 @@
             </a>
 
             <a href="https://on.soundcloud.com/HelGWdKMTXicIXeIxo" target="_blank" class="btn-link">
-                🔥 CATÁLOGO DE BEATS
+                🔥 CATÁLOGO COMPLETO DE BEATS
             </a>
 
             <a href="https://www.youtube.com/@maquh" target="_blank" class="btn-link">
@@ -141,64 +213,18 @@
             </a>
         </div>
 
-        <footer>
-            © MAQUH. TODOS LOS DERECHOS RESERVADOS.
-        </footer>
-    </div>
+        <!-- Reproductor Embebido SoundCloud -->
+        <div class="player-section">
+            <div class="section-title">BEAT RECOMENDADO</div>
+            <div class="player-container">
+                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1944809223&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
+            </div>
+        </div>
 
-    <script>
-        // Script sutil de partículas de fondo
-        const canvas = document.getElementById('particles-js');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        const particlesArray = [];
-        const numberOfParticles = 35;
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 1.5 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.3;
-                this.speedY = (Math.random() - 0.5) * 0.3;
-                this.opacity = Math.random() * 0.5 + 0.1;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
-            }
-            draw() {
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < numberOfParticles; i++) {
-            particlesArray.push(new Particle());
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particlesArray.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
-    </script>
-</body>
-</html>
+        <!-- Preguntas Frecuentes -->
+        <div class="faq-section">
+            <div class="section-title">PREGUNTAS FRECUENTES</div>
+            
+            <details>
+                <summary>¿Cómo reservo un turno?</summary>
+                <p>Tocás en "RESERVAR TURNO DE GRABACIÓN", elegís el día y horario disponible
