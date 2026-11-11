@@ -60,9 +60,29 @@
         p.subtitle {
             color: #a0a0aa;
             font-size: 0.8rem;
-            margin-bottom: 28px;
+            margin-bottom: 20px;
             letter-spacing: 1.5px;
             font-weight: 600;
+        }
+
+        /* Etiquetas de géneros musicales */
+        .genres-tags {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .genre-tag {
+            font-size: 0.65rem;
+            letter-spacing: 1px;
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            color: #00e5ff;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-weight: 700;
         }
 
         .links-group {
@@ -280,21 +300,30 @@
         <h1>MAQUH</h1>
         <p class="subtitle">PRODUCCIÓN MUSICAL | BEATS | MIX & MASTER</p>
 
+        <!-- Etiquetas de géneros musicales (Sugerencia agregada) -->
+        <div class="genres-tags">
+            <span class="genre-tag">TRAP</span>
+            <span class="genre-tag">REGGAETON</span>
+            <span class="genre-tag">AFROBEATS</span>
+            <span class="genre-tag">DANCEHALL</span>
+            <span class="genre-tag">LOFI</span>
+        </div>
+
         <div class="links-group">
             <a href="https://calendar.app.google/tdgtQwTzYvSrzDXW7" target="_blank" rel="noopener noreferrer" class="btn-link btn-primary">
                 📅 RESERVAR TURNO DE GRABACIÓN
             </a>
 
-            <!-- Botón que despliega el panel de Mix & Master -->
+            <!-- Botón de Mix & Master sin monto -->
             <button class="btn-link" onclick="toggleMixPanel()">
-                🎛️ CONTRATAR MIX & MASTER ($50.000)
+                🎛️ CONTRATAR MIX & MASTER
             </button>
 
             <!-- Panel interactivo de Mix & Master -->
             <div id="mixPanel" class="mix-master-panel">
                 <div class="instruction-box">
                     1. Subí tus stems en ZIP a Drive o WeTransfer y copiá el enlace.<br>
-                    2. Aboná los $50.000 mediante Mercado Pago.<br>
+                    2. Aboná mediante el botón de pago.<br>
                     3. Completá tus datos y enviá el pedido por WhatsApp.
                 </div>
 
@@ -314,7 +343,7 @@
 
                 <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
                     <a href="https://mpago.la/1MCvhP6" target="_blank" rel="noopener noreferrer" class="btn-link btn-accent" style="font-size: 0.85rem; padding: 12px;">
-                        💳 PAGAR $50.000 (MERCADO PAGO)
+                        💳 PAGAR
                     </a>
                     <button class="btn-link btn-primary" onclick="sendMixOrder()" style="font-size: 0.85rem; padding: 12px;">
                         💬 ENVIAR ARCHIVOS POR WSP
@@ -327,7 +356,7 @@
             </a>
 
             <a href="https://www.youtube.com/@maquh" target="_blank" rel="noopener noreferrer" class="btn-link">
-                📺 MIS CANCIONES (YOUTUBE)
+                📺 MIS CANCIONES
             </a>
 
             <a href="https://wa.me/5491176575146" target="_blank" rel="noopener noreferrer" class="btn-link">
@@ -400,7 +429,6 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // Estrellas de fondo con un brillo espacial dinámico sutil
         const stars = Array.from({ length: 90 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
@@ -419,7 +447,6 @@
             angle: 0
         };
 
-        // Nave Pixel Art escalada (Más grande y definida)
         const pixelScale = 5;
         const shipMatrix = [
             [0,0,0,1,1,0,0,0],
@@ -466,7 +493,6 @@
                 star.x -= star.speed;
                 if (star.x < 0) star.x = canvas.width;
                 
-                // Efecto brillo dinámico sutil en las estrellas
                 star.opacity += Math.sin(Date.now() * star.twinkleSpeed) * 0.005;
                 if (star.opacity < 0.2) star.opacity = 0.2;
                 if (star.opacity > 1) star.opacity = 1;
@@ -491,7 +517,5 @@
 
         animate();
     </script>
-</body>
-</html>
 </body>
 </html>
