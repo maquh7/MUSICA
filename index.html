@@ -213,11 +213,11 @@
             </a>
         </div>
 
-        <!-- Reproductor Embebido SoundCloud (Tema hhtrip) -->
+        <!-- Reproductor Embebido SoundCloud (Tema hhtrip con URL codificada directa) -->
         <div class="player-section">
             <div class="section-title">BEAT RECOMENDADO</div>
             <div class="player-container">
-                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%3Atracks%3A2027581134&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
+                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/https%3A//soundcloud.com/maquh/hhtrip&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
             </div>
         </div>
 
@@ -225,11 +225,6 @@
         <div class="faq-section">
             <div class="section-title">PREGUNTAS FRECUENTES</div>
             
-            <details>
-                <summary>¿Qué tengo que llevar a la sesión?</summary>
-                <p>Tu canción lista para grabar (letra y estructura clara).</p>
-            </details>
-
             <details>
                 <summary>¿Cuáles son los medios de pago?</summary>
                 <p>Podés abonar en efectivo o mediante transferencia bancaria.</p>
@@ -262,7 +257,6 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // Estrellas de fondo
         const stars = Array.from({ length: 80 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
@@ -271,7 +265,6 @@
             opacity: Math.random() * 0.7 + 0.3
         }));
 
-        // Nave Pixel Art
         const ship = {
             x: -40,
             y: canvas.height * 0.3,
