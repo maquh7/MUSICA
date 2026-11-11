@@ -86,6 +86,8 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.25s ease;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            width: 100%;
         }
 
         .btn-link:hover {
@@ -105,6 +107,89 @@
             background: linear-gradient(145deg, #f0f0f0, #cccccc);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-accent {
+            background: linear-gradient(145deg, #00baf2, #0082b4);
+            color: #ffffff;
+            border: none;
+        }
+
+        .btn-accent:hover {
+            background: linear-gradient(145deg, #00d2ff, #0099d4);
+        }
+
+        /* Panel Desplegable de Mix & Master */
+        .mix-master-panel {
+            display: none;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            padding: 20px;
+            margin-top: 14px;
+            text-align: left;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .mix-master-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            color: #a0a0aa;
+            margin-bottom: 6px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 0.85rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #00e5ff;
+        }
+
+        .instruction-box {
+            font-size: 0.75rem;
+            color: #888899;
+            line-height: 1.4;
+            margin-bottom: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 3px solid #00e5ff;
+        }
+
+        .payment-reminder {
+            font-size: 0.72rem;
+            color: #00e5ff;
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            padding: 8px 10px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            text-align: center;
+            font-weight: 600;
         }
 
         /* Reproductor Embebido */
@@ -200,9 +285,42 @@
                 📅 RESERVAR TURNO DE GRABACIÓN
             </a>
 
-            <a href="https://mpago.la/1MCvhP6" target="_blank" rel="noopener noreferrer" class="btn-link">
+            <!-- Botón que despliega el panel de Mix & Master -->
+            <button class="btn-link" onclick="toggleMixPanel()">
                 🎛️ CONTRATAR MIX & MASTER ($50.000)
-            </a>
+            </button>
+
+            <!-- Panel interactivo de Mix & Master -->
+            <div id="mixPanel" class="mix-master-panel">
+                <div class="instruction-box">
+                    1. Subí tus stems en ZIP a Drive o WeTransfer y copiá el enlace.<br>
+                    2. Aboná los $50.000 mediante Mercado Pago.<br>
+                    3. Completá tus datos y enviá el pedido por WhatsApp.
+                </div>
+
+                <div class="payment-reminder">
+                    ⚠️ Recordá adjuntar la captura del comprobante de pago junto con el link de los stems.
+                </div>
+
+                <div class="form-group">
+                    <label>TU NOMBRE / ARTISTA</label>
+                    <input type="text" id="artistName" placeholder="Ej: Javi Flow">
+                </div>
+
+                <div class="form-group">
+                    <label>LINK DE LOS STEMS (DRIVE / WETRANSFER)</label>
+                    <input type="text" id="stemsLink" placeholder="https://drive.google.com/...">
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
+                    <a href="https://mpago.la/1MCvhP6" target="_blank" rel="noopener noreferrer" class="btn-link btn-accent" style="font-size: 0.85rem; padding: 12px;">
+                        💳 PAGAR $50.000 (MERCADO PAGO)
+                    </a>
+                    <button class="btn-link btn-primary" onclick="sendMixOrder()" style="font-size: 0.85rem; padding: 12px;">
+                        💬 ENVIAR ARCHIVOS POR WSP
+                    </button>
+                </div>
+            </div>
 
             <a href="https://on.soundcloud.com/HelGWdKMTXicIXeIxo" target="_blank" rel="noopener noreferrer" class="btn-link">
                 🔥 CATÁLOGO COMPLETO DE BEATS
@@ -251,6 +369,27 @@
     </div>
 
     <script>
+        function toggleMixPanel() {
+            const panel = document.getElementById('mixPanel');
+            panel.classList.toggle('active');
+        }
+
+        function sendMixOrder() {
+            const artist = document.getElementById('artistName').value.trim();
+            const link = document.getElementById('stemsLink').value.trim();
+
+            if (!artist || !link) {
+                alert('Por favor, completá tu nombre y el link de los stems antes de enviar.');
+                return;
+            }
+
+            const phone = '5491176575146';
+            const text = `Hola MAQUH, soy ${artist}. Acabo de contratar el servicio de Mix & Master. Te dejo el link con los stems y te adjunto el comprobante de pago: ${link}`;
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+            
+            window.open(url, '_blank');
+        }
+
         const canvas = document.getElementById('space-canvas');
         const ctx = canvas.getContext('2d');
 
@@ -261,24 +400,27 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        const stars = Array.from({ length: 80 }, () => ({
+        // Estrellas de fondo con un brillo espacial dinámico sutil
+        const stars = Array.from({ length: 90 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
             size: Math.random() * 2 + 0.5,
             speed: Math.random() * 0.4 + 0.1,
-            opacity: Math.random() * 0.7 + 0.3
+            opacity: Math.random() * 0.7 + 0.3,
+            twinkleSpeed: Math.random() * 0.02 + 0.005
         }));
 
         const ship = {
-            x: -40,
+            x: -80,
             y: canvas.height * 0.3,
-            speedX: 1.2,
-            amplitude: 25,
-            frequency: 0.015,
+            speedX: 1.1,
+            amplitude: 30,
+            frequency: 0.012,
             angle: 0
         };
 
-        const pixelScale = 3;
+        // Nave Pixel Art escalada (Más grande y definida)
+        const pixelScale = 5;
         const shipMatrix = [
             [0,0,0,1,1,0,0,0],
             [0,0,1,2,2,1,0,0],
@@ -300,14 +442,14 @@
         function drawPixelShip(x, y) {
             ctx.save();
             ctx.translate(x, y);
-            ctx.rotate(Math.cos(ship.angle) * 0.15 + 0.2);
+            ctx.rotate(Math.cos(ship.angle) * 0.12 + 0.15);
 
             for (let r = 0; r < shipMatrix.length; r++) {
                 for (let c = 0; c < shipMatrix[r].length; c++) {
                     const colorIndex = shipMatrix[r][c];
                     if (colorIndex !== 0) {
                         ctx.fillStyle = colors[colorIndex];
-                        if (colorIndex === 4 && Math.random() > 0.4) {
+                        if (colorIndex === 4 && Math.random() > 0.3) {
                             ctx.fillStyle = '#ffaa00';
                         }
                         ctx.fillRect(c * pixelScale, r * pixelScale, pixelScale, pixelScale);
@@ -323,6 +465,12 @@
             stars.forEach(star => {
                 star.x -= star.speed;
                 if (star.x < 0) star.x = canvas.width;
+                
+                // Efecto brillo dinámico sutil en las estrellas
+                star.opacity += Math.sin(Date.now() * star.twinkleSpeed) * 0.005;
+                if (star.opacity < 0.2) star.opacity = 0.2;
+                if (star.opacity > 1) star.opacity = 1;
+
                 ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
                 ctx.fillRect(Math.floor(star.x), Math.floor(star.y), star.size, star.size);
             });
@@ -331,8 +479,8 @@
             ship.x += ship.speedX;
             ship.y = (canvas.height * 0.25) + Math.sin(ship.angle) * ship.amplitude;
 
-            if (ship.x > canvas.width + 50) {
-                ship.x = -60;
+            if (ship.x > canvas.width + 100) {
+                ship.x = -100;
                 ship.y = Math.random() * (canvas.height * 0.6) + (canvas.height * 0.1);
             }
 
@@ -343,5 +491,7 @@
 
         animate();
     </script>
+</body>
+</html>
 </body>
 </html>
