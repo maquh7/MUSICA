@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #0b0c10;
+            background-color: #080a08;
             color: #ffffff;
             display: flex;
             justify-content: center;
@@ -41,28 +41,32 @@
             width: 100%;
             max-width: 460px;
             text-align: center;
-            background: rgba(18, 18, 22, 0.85);
+            background: rgba(12, 16, 13, 0.85);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 102, 0.15);
             padding: 32px 24px;
             border-radius: 20px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 255, 102, 0.05);
             margin: 20px 0;
         }
 
         h1 {
-            font-size: 2.2rem;
-            letter-spacing: 4px;
+            font-size: 2.3rem;
+            letter-spacing: 5px;
             margin-bottom: 6px;
             font-weight: 800;
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
         }
 
         p.subtitle {
-            color: #a0a0aa;
-            font-size: 0.8rem;
-            margin-bottom: 20px;
-            letter-spacing: 1.5px;
-            font-weight: 600;
+            font-family: 'Courier New', Courier, monospace;
+            color: #00ff66;
+            font-size: 0.75rem;
+            margin-bottom: 18px;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
         }
 
         /* Etiquetas de géneros musicales */
@@ -75,14 +79,16 @@
         }
 
         .genre-tag {
+            font-family: 'Courier New', Courier, monospace;
             font-size: 0.65rem;
-            letter-spacing: 1px;
-            background: rgba(0, 229, 255, 0.08);
-            border: 1px solid rgba(0, 229, 255, 0.2);
-            color: #00e5ff;
-            padding: 4px 8px;
+            letter-spacing: 1.5px;
+            background: rgba(0, 255, 102, 0.05);
+            border: 1px solid rgba(0, 255, 102, 0.25);
+            color: #00ff66;
+            padding: 4px 10px;
             border-radius: 20px;
             font-weight: 700;
+            box-shadow: 0 0 8px rgba(0, 255, 102, 0.1);
         }
 
         .links-group {
@@ -96,7 +102,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background: linear-gradient(145deg, #1d1e24, #15161a);
+            background: linear-gradient(145deg, #141915, #0d120e);
             color: #ffffff;
             text-decoration: none;
             padding: 16px 20px;
@@ -105,16 +111,16 @@
             font-size: 0.95rem;
             border: 1px solid rgba(255, 255, 255, 0.08);
             transition: all 0.25s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             cursor: pointer;
             width: 100%;
         }
 
         .btn-link:hover {
-            background: linear-gradient(145deg, #282932, #1d1e24);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(145deg, #1b241c, #141915);
+            border-color: rgba(0, 255, 102, 0.4);
             transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 6px 20px rgba(0, 255, 102, 0.25);
         }
 
         .btn-primary {
@@ -126,7 +132,7 @@
         .btn-primary:hover {
             background: linear-gradient(145deg, #f0f0f0, #cccccc);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
         }
 
         .btn-accent {
@@ -142,13 +148,14 @@
         /* Panel Desplegable de Mix & Master */
         .mix-master-panel {
             display: none;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(10, 15, 11, 0.9);
+            border: 1px solid rgba(0, 255, 102, 0.25);
             border-radius: 14px;
             padding: 20px;
             margin-top: 14px;
             text-align: left;
             animation: fadeIn 0.3s ease;
+            box-shadow: inset 0 0 15px rgba(0, 255, 102, 0.03);
         }
 
         .mix-master-panel.active {
@@ -166,6 +173,7 @@
 
         .form-group label {
             display: block;
+            font-family: 'Courier New', Courier, monospace;
             font-size: 0.75rem;
             color: #a0a0aa;
             margin-bottom: 6px;
@@ -176,35 +184,38 @@
         .form-group input {
             width: 100%;
             padding: 12px;
-            background: rgba(10, 10, 15, 0.8);
+            background: rgba(5, 8, 6, 0.9);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 8px;
             color: #ffffff;
             font-size: 0.85rem;
             outline: none;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
         .form-group input:focus {
-            border-color: #00e5ff;
+            border-color: #00ff66;
+            box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
         }
 
         .instruction-box {
-            font-size: 0.75rem;
-            color: #888899;
-            line-height: 1.4;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.72rem;
+            color: #a0a0b0;
+            line-height: 1.5;
             margin-bottom: 16px;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.4);
             padding: 10px;
             border-radius: 6px;
-            border-left: 3px solid #00e5ff;
+            border-left: 3px solid #00ff66;
         }
 
         .payment-reminder {
-            font-size: 0.72rem;
-            color: #00e5ff;
-            background: rgba(0, 229, 255, 0.08);
-            border: 1px solid rgba(0, 229, 255, 0.2);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.7rem;
+            color: #00ff66;
+            background: rgba(0, 255, 102, 0.06);
+            border: 1px solid rgba(0, 255, 102, 0.2);
             padding: 8px 10px;
             border-radius: 6px;
             margin-bottom: 12px;
@@ -219,9 +230,10 @@
         }
 
         .section-title {
-            font-size: 0.85rem;
-            letter-spacing: 1.5px;
-            color: #888899;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #889988;
             margin-bottom: 10px;
             font-weight: 700;
             text-align: center;
@@ -230,7 +242,8 @@
         .player-container {
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 102, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         /* FAQ Desplegable */
@@ -240,17 +253,18 @@
         }
 
         details {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 10px;
             margin-bottom: 10px;
             padding: 12px 16px;
             font-size: 0.85rem;
-            transition: background 0.2s;
+            transition: background 0.2s, border-color 0.2s;
         }
 
         details[open] {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(0, 255, 102, 0.03);
+            border-color: rgba(0, 255, 102, 0.2);
         }
 
         summary {
@@ -270,7 +284,7 @@
         summary::after {
             content: "+";
             font-size: 1.1rem;
-            color: #888899;
+            color: #00ff66;
         }
 
         details[open] summary::after {
@@ -279,16 +293,17 @@
 
         details p {
             margin-top: 10px;
-            color: #aaaabb;
+            color: #9999aa;
             line-height: 1.4;
             font-size: 0.8rem;
         }
 
         footer {
             margin-top: 32px;
-            color: #555566;
-            font-size: 0.75rem;
-            letter-spacing: 1.5px;
+            color: #445544;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -359,7 +374,7 @@
                 📺 MIS CANCIONES
             </a>
 
-            <!-- Botón de WhatsApp solo con ícono y texto minimalista -->
+            <!-- Botón de WhatsApp solo con ícono -->
             <a href="https://wa.me/5491176575146" target="_blank" rel="noopener noreferrer" class="btn-link">
                 💬
             </a>
@@ -369,7 +384,7 @@
         <div class="player-section">
             <div class="section-title">BEAT RECOMENDADO</div>
             <div class="player-container">
-                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2435943189&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+                <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2435943189&color=%2300ff66&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
             </div>
         </div>
 
@@ -462,8 +477,8 @@
 
         const colors = {
             1: '#ffffff',
-            2: '#888899',
-            3: '#00e5ff',
+            2: '#889988',
+            3: '#00ff66',
             4: '#ff3366'
         };
 
